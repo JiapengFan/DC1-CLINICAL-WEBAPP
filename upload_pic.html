@@ -1,0 +1,113 @@
+<html>
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    .picture{
+          width: 800px;
+          height: 500px;
+          margin-left: 150px;
+          border:1px solid #000;
+      }
+      #img_span img{
+          width: 220px;
+          height: 200px;
+          margin-right: 20px;
+          margin-top: 20px;
+      }
+
+       body {
+        background-color: black;
+    }
+
+    h1 {
+  color: white;
+  text-align:center;
+}
+    p {
+  color: white;
+  text-align:center;
+}
+
+
+    .fileinput-button {
+            position: relative;
+            display: inline-block;
+        }
+
+   .fileinput-button input{
+         position: absolute;
+            right: 0px;
+            top: 0px;
+            opacity: 0;
+            -ms-filter: 'alpha(opacity=0)';}
+
+
+    </style>
+
+  <title>Upload Images</title>
+</head>
+
+
+
+
+
+<body>
+<h1 class="section-title">Upload Images</h1>
+<p>click the "choose file" button, you may upload multiple images to display</p>
+
+<section class="mb-5">
+     <div class="picture container">
+            <span class = "fileinput-button btn btn-secondary fileinput-button" >
+                <span>Choose Images</span>
+                 <input onchange="changepic(this)" type="file"><br> 
+            </span> 
+            <span id="img_span">  </span> 
+     </div>
+     
+</body>
+
+
+</section>
+
+<section id="results" class="mb-5">
+    <h1 class="section-title">Results</h1>
+        <p>
+            "reultes will be here"
+        </p>
+    </section>
+</body>
+
+
+
+
+
+
+
+
+<script>
+        var i=0;
+        function changepic(obj) {
+            document.getElementById("img_span").innerHTML+="<img src=\"\" id=\"show"+i+"\" width=\"200\" style=\"opacity: 0;\">"; 
+            var newsrc=getObjectURL(obj.files[0]);
+            document.getElementById('show'+i).src=newsrc;
+            document.getElementById("show"+i).style.opacity=1;
+            i++;
+        }
+        function getObjectURL(file) {
+            var url = null ;
+            if (window.createObjectURL!=undefined) { // basic
+                url = window.createObjectURL(file) ;
+            } else if (window.URL!=undefined) { // mozilla(firefox)
+                url = window.URL.createObjectURL(file) ;
+            } else if (window.webkitURL!=undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file) ;
+            }
+            return url ;
+        }
+
+
+    </script>
+
+</html>
