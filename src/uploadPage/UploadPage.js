@@ -1,10 +1,10 @@
 import React from "react";
 
 // Import components
-import LandingBox from "../uploadPage/LandingBox";
-import FooterBox from "../uploadPage/FooterBox";
+import LandingBox from "./LandingBox";
+import FooterBox from "./FooterBox";
 
-const App = () => {
+const UploadPage = () => {
   return (
     <div className="mainFrame">
       <LandingBox />
@@ -13,4 +13,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default UploadPage;
