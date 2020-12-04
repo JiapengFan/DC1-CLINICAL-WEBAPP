@@ -2,9 +2,9 @@ import React from "react";
 
 const UsageDescription = () => {
   return (
-    <h2>
+    <p className='description'>
       To start diagnosing, please upload your image by pressing the button below
-    </h2>
+    </p>
   );
 };
 
