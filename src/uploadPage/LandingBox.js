@@ -10,13 +10,13 @@ import AppName from "./landingBox/AppName";
 // Main frame component of upload page
 const LandingBox = () => {
   return (
-    <section className="landingBox">
+    <article className="landingBox">
       <AppName />
       <UtilityDescription />
       <UsageDescription />
       <UploadButton />
       <FootNote />
-    </section>
+    </article>
   );
 };
 

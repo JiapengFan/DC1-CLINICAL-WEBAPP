@@ -1,15 +1,9 @@
 import React from "react";
-
-// Import components
-import LandingBox from "./LandingBox";
-import FooterBox from "./FooterBox";
+import BackgroundImage from "./BackgroundImage";
 
 const UploadPage = () => {
   return (
-    <div className="mainFrame">
-      <LandingBox />
-      <FooterBox />
-    </div>
+    <BackgroundImage />
   );
 };
 

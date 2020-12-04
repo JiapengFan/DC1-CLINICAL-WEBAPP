@@ -1,3 +1,9 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
 .container {
   height: calc(100vh);
   padding-left: calc(20vw);
@@ -17,15 +23,46 @@
   -moz-box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.25);
   margin: auto;
+  background-color: white;
 }
 
 .mainFrame h1 {
   font-size: 50px;
   font-family: "Product Sans Black";
-  font-weight: 400;
+  font-weight: 700;
+  margin-bottom: 40px;
 }
 
 .mainFrame p {
   font-family: "Product Sans Light";
+}
+
+.description {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #111111;
   font-weight: 400;
+}
+
+.footnote {
+  color:#adadad;
+  font-size: 18px;
+  margin-top: 20px;
+  font-weight: 400;
+}
+
+.footer-container {
+  background-color: #1a1a1a;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-left: -100px;
+  margin-right: -100px;
+  margin-bottom: -80px;
+  margin-top: 40px;
+}
+
+.footer {
+  color: #adadad;
+  font-size: 12px;
+  text-align: center;
 }

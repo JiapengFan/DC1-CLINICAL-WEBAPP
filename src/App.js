@@ -6,9 +6,9 @@ import "./css/uploadPage.css";
 
 const App = () => {
   return (
-    <div className="container">
+    <React.Fragment>
       <UploadPage />
-    </div>
+    </React.Fragment>
   );
 };
 

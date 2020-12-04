@@ -2,9 +2,9 @@ import React from "react";
 
 const UploadButton = () => {
   return (
-    <article>
+    <React.Fragment>
       <button type="button">UPLOAD IMAGE</button>
-    </article>
+    </React.Fragment>
   );
 };
 
