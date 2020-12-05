@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+div {
+  display: block;
+}
+
 .container {
   height: calc(100vh);
   padding-left: calc(20vw);
@@ -65,4 +69,18 @@
   color: #adadad;
   font-size: 12px;
   text-align: center;
+}
+
+.uploadButton {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: 0px;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 20px;
 }
