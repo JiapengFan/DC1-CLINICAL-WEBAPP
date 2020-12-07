@@ -1,6 +1,7 @@
 # DC1-Front-End
 
 # Front-end of data challenge 1 app that is designed to diagnose diabetic retinopathy,
+Need to run the Flask and the React apps simultaneously to work properly.
 
 # Getting Started with Create React App
 
