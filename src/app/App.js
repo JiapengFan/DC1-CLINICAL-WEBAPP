@@ -5,18 +5,18 @@ import LandingBox from "../uploadPage/LandingBox";
 import FooterBox from "../uploadPage/FooterBox";
 
 const App = () => {
-  const [state, setState] = useState('Hi');
+  const [prediction, setPrediction] = useState(0);
 
   useEffect(() => {
-    fetch('/hello').then(res => res.json()).then(data => {
-      setState(data.result);
+    fetch('/predictor').then(res => res.json()).then(data => {
+      setPrediction(data.prediction);
     });
   }, []);
 
   return (
     <div className="mainFrame">
       <LandingBox />
-  <p>Flask says {state}</p>
+      <p>Flask says {prediction}</p>
       <FooterBox />
     </div>
   );
