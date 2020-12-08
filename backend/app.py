@@ -12,11 +12,24 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+# Save files
+file_links = []
+def handle_file(f):
+    if not allowed_file(f.filename):
+        return
+
+    filename = secure_filename(f.filename)
+    file_link = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    
+    file_links.append(file_link)
+
+    f.save(file_link)
+
 # Initialize app
 app = Flask(__name__)
-# app.config['SECRET_KEY'] = 'the quick brown fox jumps over the lazy   dog'
-# app.config['CORS_HEADERS'] = 'Content-Type'
+app.config['SECRET_KEY'] = "vm$wZ%dh9H/A8~ltuPLLlKSpmVD"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 cors = CORS(app, resources={r"/upload": {"origins": "http://localhost:3000"}})
 
 # General doc in case someone peeks
@@ -31,34 +44,33 @@ def predictor():
     return {'prediction': 0.82}
 
 # Upload image(s)
-@app.route('/upload', methods=['POST', 'GET'])
+@app.route('/upload', methods=['POST'])
 @cross_origin(allow_headers=['*'])
 def fileUpload():
-    if request.method == 'POST':
-        # check if the post request has the file part
-        if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
-        file = request.files['file']
+    # Delete contents if the directory is not empty (very hacky)
+    if len(os.listdir(UPLOAD_FOLDER) ) > 0:
+        file_list = [ os.path.join(UPLOAD_FOLDER,f) for f in os.listdir(UPLOAD_FOLDER) if os.path.isfile(os.path.join(UPLOAD_FOLDER,f)) ]
+        # for filepath in directory path
+        for file_path in file_list:
+            os.remove(file_path)
 
-        # if the user does not select file, ask again
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
-        
-        # save the file
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            # TODO concat RIGHT and LEFT to filenames (and expand to allow 2 uploads)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            # TODO return this URL to the FE 
-            # return redirect(url_for('uploaded_file', filename=filename))
-        return 'Image successfully uploaded.'
+    if request.method == 'POST':
+        files = request.files.getlist('file[]')
     else:
-        file = request.args.get('file')
-        return 'Image successfully retrieved.'
+        files = request.args.get('file[]')
+        
+    # Only accept 2 files
+    i = 0
+    for file in files:
+        if i < 2: handle_file(file)
+        else: break
+        i = i + 1
+
+    # TODO return file_links to the FE 
+
+    # TODO link this to the results page
+    return "Files successfully uploaded."
 
 
 if __name__ == "__main__":
-    # app.secret_key = os.urandom(24)
     app.run()
