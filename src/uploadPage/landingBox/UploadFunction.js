@@ -25,13 +25,19 @@ const UploadFunction = () => {
 
     return (
         <React.Fragment>
-            <input 
-            type='file' 
-            onChange={imageSetHandler} 
-            multiple
-            /> 
-            <br/>
-            <button onClick={imageUploadHandler} className='uploadButton'>UPLOAD IMAGE</button>
+            <form action = "http://localhost:5000/upload" 
+            method = "POST"
+            // encType is CRUCIAL for the backend
+            encType = "multipart/form-data"> 
+                <input 
+                type='file' 
+                name = "file[]"
+                onChange={imageSetHandler} 
+                multiple
+                /> 
+                <br/>
+                <input type = "submit" className='uploadButton'/>
+            </form>
         </React.Fragment>
     );
 }
