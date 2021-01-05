@@ -12,3 +12,5 @@ const RecPage = () => {
         </div>
     );
 }
+
+export default RecPage;
