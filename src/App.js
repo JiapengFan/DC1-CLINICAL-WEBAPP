@@ -8,8 +8,9 @@ import {
 
 // Import components
 import UploadPage from "./uploadPage/UploadPage";
-import "./css/uploadPage.css";
 import RecPage from "./recPage/RecPage";
+import "./css/uploadPage.css";
+
 
 const App = () => {
   return (
@@ -19,7 +20,7 @@ const App = () => {
         <UploadPage />
       </Route>
       <Route path="/recommendation">
-        <RecPage />
+        <RecPage degree={2}/>
       </Route>
       <Route path="/">
         <UploadPage />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 // Import unique components
 import Header from "./Header";
 import Text from "./Text";
@@ -12,29 +12,33 @@ import FootNote from "../uploadPage/landingBox/FootNote";
 // Styling in-line
 const confusionMatrix = {
     width: '500px',
-    heigth: 'auto'
+    maxHeight: '400px',
+    height: 'auto'
 }
 
 const wrapper = {
     display: 'flex'
 }
 
-const RecPage = () => {
-    return (
-        <div className='backgroundImage' style={backgroundImageStyle}>
-            <div className='container'>
-                <section className='mainFrame'>
-                    <Header degree={2}/>
-                    <div className="wrapper" style={wrapper}>
-                        <img src={CM} alt="Confusion matrix" style={confusionMatrix}/>
-                        <Text degree={1}/>
-                    </div>
-                    <FootNote />   
-                    <FooterBox />
-                </section>
+class RecPage extends Component {
+    render() {
+
+        return (
+            <div className='backgroundImage' style={backgroundImageStyle}>
+                <div className='container'>
+                    <section className='mainFrame'>
+                        <Header degree={this.props.degree}/>
+                        <div className="wrapper" style={wrapper}>
+                            <img src={CM} alt="Confusion matrix" style={confusionMatrix}/>
+                            <Text degree={this.props.degree}/>
+                        </div>
+                        {/* <FootNote />    */}
+                        <FooterBox />
+                    </section>
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
 
 export default RecPage;
