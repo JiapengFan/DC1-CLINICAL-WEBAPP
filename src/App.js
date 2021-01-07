@@ -16,13 +16,10 @@ const App = () => {
   return (
     <div>
     <Switch>
-      <Route path="/upload">
-        <UploadPage />
-      </Route>
       <Route path="/recommendation">
         <RecPage degree={2}/>
       </Route>
-      <Route path="/">
+      <Route exact path="/">
         <UploadPage />
       </Route>
     </Switch>
