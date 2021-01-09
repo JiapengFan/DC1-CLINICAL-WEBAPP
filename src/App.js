@@ -24,9 +24,6 @@ const App = () => {
       </Route>
     </Switch>
     </div>
-    // <React.Fragment>
-    //   <UploadPage />
-    // </React.Fragment>
   );
 };
 
