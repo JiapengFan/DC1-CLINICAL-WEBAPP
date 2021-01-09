@@ -1,8 +1,11 @@
 # load and evaluate a saved model
+import os
+import numpy as np
 from numpy import loadtxt
+import tensorflow as tf
 from tensorflow import keras
 from keras.models import load_model
-import numpy as np
+from keras.preprocessing import image
 
 class Predictor_API:
     def __init__(self):
@@ -11,7 +14,7 @@ class Predictor_API:
         # (optional line) summarize model
         self.model.summary()
 
-     # 2 load dataset
+    # 2 load dataset
     # def read_train_data():
     #     data = np.load("trainDataSmall.npz")
     #     X_train = data["X_train"]
@@ -30,12 +33,37 @@ class Predictor_API:
     # def get_accuracy(self):
     #     return print("%s: %.2f%%" % (self.model.metrics_names[1], self.score[1]*100))
     
-    # 6 Predict DR level of image
-    def predict(self, image):
-        # TODO reshape image
+    def get_pics(self, img_dir):
+        model = self.model 
+        dim0 = len(os.listdir(img_dir))
+        dim1 = model.layers[0].input_shape[1]
+        dim2 = model.layers[0].input_shape[2]
+        dim3 = model.layers[0].input_shape[3]
 
-        # TODO predict DR severity level 
-        pass
+        # set up empty batch holder
+        batch_holder = np.zeros((dim0, dim1, dim2, dim3))
+
+        # upload images from path to batch (with correct shape)
+        for i,img in enumerate(os.listdir(img_dir)):
+            img = image.load_img(os.path.join(img_dir,img), target_size=(IMG_SIZE,IMG_SIZE))
+            batch_holder[i, :] = img
+
+        return batch_holder
+
+    # Get predictions of each image in the folder
+    def get_predictions(self):
+        batch = get_pics('uploads/')
+        predictions = model.predict_classes(batch)
+        return predictions
+        
+
+
+
+
+# Load model 
+# Load pics
+# Predict pic
+# FUNCT return predictions
 
     # 1 Load model
     # 2 Load data
